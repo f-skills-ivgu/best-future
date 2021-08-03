@@ -1,0 +1,27 @@
+{% extends "courier_base.html" %}
+
+{% block content %}
+<h1>Страница курьера</h1>
+<p><h3>Текущий заказ:</h3></p>
+
+  <table class="table table-hover">
+   <thead>
+    <tr>
+      <th scope="col">Номер заказа</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Статус заказа</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+      <th scope="row">{{order.id}}</th>
+      <td>{{order.address}}</td>
+      <td><button type="submit" class="btn btn-outline-success"  >Заказ доставлен</button></td>
+    </tr>
+   </tbody>
+  </table>
+
+
+<p><h3>Статус курьера:</h3></p>
+<div>{{status}}</div>
+{% endblock %}
