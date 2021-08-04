@@ -5,8 +5,6 @@ from data.schedule import Schedule
 from data.user import User
 from data import db_session
 
-#h
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -19,7 +17,7 @@ login_manager.init_app(app)
 
 @app.route("/")
 def index():
-    return 'Main page'
+    return render_template('index.html', title='Главная страница')
 
 
 def main():
