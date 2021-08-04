@@ -5,6 +5,9 @@ from data.schedule import Schedule
 from data.user import User
 from data import db_session
 
+#h
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
