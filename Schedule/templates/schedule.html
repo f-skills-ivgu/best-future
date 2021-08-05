@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Расписание</h1>
+
+
+
+{% for item in schedule%}
+<div class="col-md6 border rounded">
+
+    <table width="1000" border="0" align="center">
+  <thead>
+    <tr>
+        <th scope="col" width="50px" ><font size="4"><i>День недели</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Название</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Время начала </i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Время конца</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Номера группы</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Преподаватель</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Ссылка</i></font></th>
+    </tr>
+  </thead>
+        <div>
+        <td> {{item.week_day}} </td>
+        <td> {{item.name}} </td>
+        <td> {{item.start_time}} </td>
+        <td> {{item.end_time}} </td>
+        <td> {{item.group}} </td>
+        <td> {{item.teacher}} </td>
+        <td> {{item.conf_link}} </td>
+        </div>
+    </table>
+{% if current_user.is_authenticated and current_user.role == 2 %}
+    <div>
+        <a href="/lesson/{{ item.id }}" class="btn btn-warning">
+            Изменить
+        </a>
+    </div>
+{% endif %}
+</div>
+{% endfor %}
+{% if current_user.is_authenticated and current_user.role == 2%}
+    <a href="lesson" class="btn btn-secondary">Добавить урок</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+   <h1>Список преподавателя</h1>
+
+{% for item in user %}
+<div class="col-md6 border rounded">
+
+    <table width="1000" border="0" align="center">
+  <thead>
+    <tr>
+        <th scope="col" width="50px" ><font size="4"><i>ID преподавателя</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Имя преподавателя</i></font></th>
+        <th scope="col" width="50px" ><font size="4" ><i>Обучаемые группы </i></font></th>
+    </tr>
+  </thead>
+            <div>
+            <td> {{item.id}} </td>
+            <td> {{item.name}} </td>
+            <td> {{item.note}} </td>
+            </div>
+    </table>
+{% if current_user.is_authenticated and current_user.role == 2 %}
+    <div>
+        <a href="/profile/{{ item.id }}" class="btn btn-warning" >
+            Изменить
+        </a>
+    </div>
+{% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
